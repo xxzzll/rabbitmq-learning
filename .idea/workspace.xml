@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8ce3905c-6c36-4146-848d-512980e757f6" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="$MAVEN_REPOSITORY$" />
+        <option name="mavenHome" value="/usr/local/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="$USER_HOME$/.m2/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1ZTX4oQhLib6cvn6d7eSWGyZAwK" />
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/springboot-rabbitmq-direct-consumer/pom.xml" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.25839794" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.huawei.direct.springbootrabbitmqdirectproducer.mq" />
+      <recent name="com.huawei.direct.springbootrabbitmqdirectconsumer.mq" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.SpringbootRabbitmqFanoutProducerApplicationTests.contextLoads (1)">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="rabbitmq-learning" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="rabbitmq-learning" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SpringbootRabbitmqFanoutProducerApplicationTests.contextLoads (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot-rabbitmq-direct-producer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.huawei.direct.springbootrabbitmqdirectproducer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.huawei.direct.springbootrabbitmqdirectproducer" />
+      <option name="MAIN_CLASS_NAME" value="com.huawei.direct.springbootrabbitmqdirectproducer.SpringbootRabbitmqFanoutProducerApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootRabbitmqFanoutProducerApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot-rabbitmq-fanout-producer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.huawei.fanout.springbootrabbitmqfanoutproducer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.huawei.fanout.springbootrabbitmqfanoutproducer" />
+      <option name="MAIN_CLASS_NAME" value="com.huawei.fanout.springbootrabbitmqfanoutproducer.SpringbootRabbitmqFanoutProducerApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootRabbitmqDirectConsumerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="springboot-rabbitmq-direct-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.huawei.direct.springbootrabbitmqdirectconsumer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.huawei.direct.springbootrabbitmqdirectconsumer.SpringbootRabbitmqDirectConsumerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootRabbitmqDirectConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot-rabbitmq-direct-consumer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.huawei.fanout.springbootrabbitmqdirectconsumer.SpringbootRabbitmqDirectConsumerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootRabbitmqFanoutConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot-rabbitmq-fanout-consumer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.huawei.fanout.springbootrabbitmqdirectconsumer.SpringbootRabbitmqFanoutConsumerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootRabbitmqFanoutProducerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot-rabbitmq-fanout-producer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.huawei.fanout.springbootrabbitmqfanoutproducer.SpringbootRabbitmqFanoutProducerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SpringbootRabbitmqFanoutProducerApplicationTests.contextLoads (1)" />
+        <item itemvalue="Spring Boot.SpringbootRabbitmqDirectConsumerApplication (1)" />
+        <item itemvalue="JUnit.SpringbootRabbitmqFanoutProducerApplicationTests.contextLoads" />
+        <item itemvalue="Spring Boot.SpringbootRabbitmqDirectConsumerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <option name="contentProportion" value="0.22815159" />
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@70339192" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@70339192" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@df38000d" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8ce3905c-6c36-4146-848d-512980e757f6" name="Default Changelist" comment="" />
+      <created>1584863868140</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584863868140</updated>
+      <workItem from="1584863871350" duration="9674000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/springboot-rabbitmq-fanout-consumer/src/main/java/com/huawei/fanout/springbootrabbitmqdirectconsumer/mq/EmailService.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/springboot-rabbitmq-fanout-consumer/src/main/java/com/huawei/fanout/springbootrabbitmqdirectconsumer/mq/LogService.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
