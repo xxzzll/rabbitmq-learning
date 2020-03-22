@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/springboot-rabbitmq-fanout-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-rabbitmq-direct-producer/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-rabbitmq-direct-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq-demo/pom.xml" />
       </list>
     </option>
   </component>

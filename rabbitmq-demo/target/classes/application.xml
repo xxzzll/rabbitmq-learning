@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+           https://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--定义rabbitmq的连接工厂-->
+    <rabbit:connection-factory id="rabbitConnectionFactory"
+            host="127.0.0.1" port="5672"
+            username="test" password="test" virtual-host="/test" />
+
+    <!--定义rabbit模板-->
+    <rabbit:template id="amqpTemplate" connection-factory="rabbitConnectionFactory" exchange="fanoutExchange"/>
+
+    <!--rabbitmq管理：queue and exchange ... ，类似于：channel-->
+    <rabbit:admin connection-factory="rabbitConnectionFactory"/>
+
+    <!--声明队列-->
+    <rabbit:queue name="myQueue" auto-declare="true" durable="true"/>
+
+    <!--声明交换机，绑定队列-->
+    <rabbit:fanout-exchange name="fanoutExchange" auto-declare="true">
+        <rabbit:bindings>
+            <rabbit:binding queue="myQueue"/>
+        </rabbit:bindings>
+    </rabbit:fanout-exchange>
+
+    <!--队列监听-->
+    <rabbit:listener-container>
+        <rabbit:listener ref="customer" method="listen" queue-names="myQueue"/>
+    </rabbit:listener-container>
+
+    <!--消费者-->
+    <bean id="customer" class="com.huawei.rabbitmq.spring.MyCustomer" />
+</beans>
