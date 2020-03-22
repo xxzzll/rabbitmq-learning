@@ -21,13 +21,13 @@ public class receiver01 {
         Channel channel = connection.createChannel();
 
         // 声明消息队列
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
         // 将交换机（exhange）和消息队列（queue）相绑定
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "");
 
         int prefetchCount = 1;
-        channel.basicQos(prefetchCount);
+        channel.basicQos(prefetchCount, false);
 
         Consumer consumer = new DefaultConsumer(channel){
             @Override

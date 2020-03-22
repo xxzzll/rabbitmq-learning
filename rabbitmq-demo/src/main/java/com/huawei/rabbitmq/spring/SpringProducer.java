@@ -1,10 +1,10 @@
 package com.huawei.rabbitmq.spring;
-
+/*
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;*/
 
 /**
  * @author xixi
@@ -15,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringProducer {
 
     public static void main(String[] args) throws InterruptedException {
+        /*
         AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:application.xml");
         RabbitTemplate rabbitTemplate = applicationContext.getBean(RabbitTemplate.class);
 
@@ -22,6 +23,7 @@ public class SpringProducer {
         rabbitTemplate.convertAndSend(msg);
         Thread.sleep(1000); // 休眠1s
         applicationContext.destroy(); // 容器销毁
+        */
 
     }
 }

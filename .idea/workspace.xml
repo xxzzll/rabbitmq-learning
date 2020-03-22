@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ce3905c-6c36-4146-848d-512980e757f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq-demo/images/rabbitmq整体架构.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq-demo/images/rabbitmq消息流转图.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rabbitmq-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rabbitmq-demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rabbitmq-demo/rabbitmq.md" beforeDir="false" afterPath="$PROJECT_DIR$/rabbitmq-demo/rabbitmq.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rabbitmq-demo/src/main/java/com/huawei/rabbitmq/ps/Sender.java" beforeDir="false" afterPath="$PROJECT_DIR$/rabbitmq-demo/src/main/java/com/huawei/rabbitmq/ps/Sender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rabbitmq-demo/src/main/java/com/huawei/rabbitmq/ps/receiver01.java" beforeDir="false" afterPath="$PROJECT_DIR$/rabbitmq-demo/src/main/java/com/huawei/rabbitmq/ps/receiver01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rabbitmq-demo/src/main/java/com/huawei/rabbitmq/spring/SpringProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rabbitmq-demo/src/main/java/com/huawei/rabbitmq/spring/SpringProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rabbitmq-demo/target/classes/com/huawei/rabbitmq/ps/Sender.class" beforeDir="false" afterPath="$PROJECT_DIR$/rabbitmq-demo/target/classes/com/huawei/rabbitmq/ps/Sender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rabbitmq-demo/target/classes/com/huawei/rabbitmq/ps/receiver01.class" beforeDir="false" afterPath="$PROJECT_DIR$/rabbitmq-demo/target/classes/com/huawei/rabbitmq/ps/receiver01.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rabbitmq-demo/target/classes/com/huawei/rabbitmq/spring/SpringProducer.class" beforeDir="false" afterPath="$PROJECT_DIR$/rabbitmq-demo/target/classes/com/huawei/rabbitmq/spring/SpringProducer.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +82,9 @@
       <recent name="com.huawei.direct.springbootrabbitmqdirectproducer.mq" />
       <recent name="com.huawei.direct.springbootrabbitmqdirectconsumer.mq" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rabbitmq-demo/images" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -90,7 +103,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpringbootRabbitmqFanoutProducerApplicationTests.contextLoads (1)">
+  <component name="RunManager" selected="Application.Sender">
+    <configuration name="Sender" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.huawei.rabbitmq.ps.Sender" />
+      <module name="rabbitmq-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.huawei.rabbitmq.ps.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="receiver01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.huawei.rabbitmq.ps.receiver01" />
+      <module name="rabbitmq-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.huawei.rabbitmq.ps.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="rabbitmq-learning" />
       <working_directory value="$PROJECT_DIR$" />
@@ -178,10 +217,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Sender" />
+        <item itemvalue="Application.receiver01" />
         <item itemvalue="JUnit.SpringbootRabbitmqFanoutProducerApplicationTests.contextLoads (1)" />
         <item itemvalue="Spring Boot.SpringbootRabbitmqDirectConsumerApplication (1)" />
         <item itemvalue="JUnit.SpringbootRabbitmqFanoutProducerApplicationTests.contextLoads" />
-        <item itemvalue="Spring Boot.SpringbootRabbitmqDirectConsumerApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +256,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584863868140</updated>
-      <workItem from="1584863871350" duration="10035000" />
+      <workItem from="1584863871350" duration="17957000" />
     </task>
     <servers />
   </component>

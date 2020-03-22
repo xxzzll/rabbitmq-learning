@@ -1,5 +1,22 @@
 # RabbitMQ
 
+## 前置问题
+1. 可靠生产
+2. 可靠消费
+3. 消息转移
+4. 什么是消息冗余
+5. 什么是死信队列、重定向队列（场景是什么）
+6. 什么是延迟队列（场景是什么）
+7. rabbitmq高可用，集群模式有哪些？ mirror queue + keepalive + hv
+
+## RabbitMQ docker安装
+   ```shell script
+    # 拉去rabbitmq镜像
+    docker pull rabbitmq:3-management
+    # 创建 rabbitmq 容器
+    docker run -di --name myrabbit -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASSWORD=admin -p 15672:15672 -p 5672:5672 -p 25672:25672 -p 61613:61613 -p 1883:1883 rabbitmq:3-management
+   ```
+
 ## 为什么要使用RabbitMQ
 -   目标
     掌握和了解什么是rabbitmq
@@ -36,9 +53,15 @@
     -   Routing key：是一个路由规则，虚拟机可以用它来确定如何路由一个特定消息。
     -   Queue：队列，也成为Message Queue，消息队列，保存消息并将他们转发给消费者。
     
-       
-    
+-   rabbitmq 整体架构
 
+    ![](./images/rabbitmq整体架构.png)
+    
+-   rabbitmq 消息流转
+
+    ![](./images/rabbitmq消息流转图.png)
+        
+    
 ## 消息队列解决了什么问题？
 -   异步处理（订单超时后的订单取消）
 -   应用解偶（下单与扣库存）
@@ -127,21 +150,143 @@
     
     所以，要解决以上问题，要引入消息持久化
     
--   消息持久化
-    ```java
-     /**
-       * durable=true 我们就声明了一个可持久化的队列(queue)
-       *@param durable true if we are declaring a durable queue (the queue will survive a server restart)
-       */
-     Queue.DeclareOk queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete,
-                                     Map<String, Object> arguments) throws IOException;
-    ```
-    注意：
-        一个已经创建出的未设置持久化的队列重新设置持久化被报错。
+-   持久化
 
-    解决：应该重新创建一个队列，或者rabbitmq客户端中删除那个队列。
+    为了保证RabbitMQ在退出或者crash等异常情况下数据没有丢失，需要将queue，exchange和Message都持久化。
+    
+    -   queue的持久化
+    
+        queueDeclare相关的有4种方法
+        ```text
+        // durable=true 我们就声明了一个可持久化的队列(queue)
+        Queue.DeclareOk queueDeclare() throws IOException;
+        Queue.DeclareOk queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete,
+                                         Map<String, Object> arguments) throws IOException;
+        void queueDeclareNoWait(String queue, boolean durable, boolean exclusive, boolean autoDelete,
+                                    Map<String, Object> arguments) throws IOException;
+        Queue.DeclareOk queueDeclarePassive(String queue) throws IOException;
+        ```
+        
+    -   消息的持久化
+        
+        如果将queue的持久化标识durable设置为true，代表一个持久化的队列，那么服务重启后，队列也会存在，因为服务器把持久化的queue存于磁盘中;
+        
+        队列可以被持久化的，但里面的消息是否为持久化？那么还要看消息的持久化设置。
+        
+        也就是说，重启之前，消息队列queue中有没发出的消息，重启之后那个队列中是否还保存消息取决于发送消息时对消息的设置（是否持久化设置）
+        
+        basicPublish相关方法
+        ```text
+        void basicPublish(String exchange, String routingKey, BasicProperties props, byte[] body) throws IOException;
+        void basicPublish(String exchange, String routingKey, boolean mandatory, BasicProperties props, byte[] body)
+                throws IOException;
+        void basicPublish(String exchange, String routingKey, boolean mandatory, boolean immediate, BasicProperties props, byte[] body)
+                throws IOException;
+        ```
+        
+        关键的是BasicProperties props这个参数了，这里看下BasicProperties的定义：
+        ```text
+        public BasicProperties(
+                    String contentType,//消息类型如：text/plain
+                    String contentEncoding,//编码
+                    Map<String,Object> headers,
+                    Integer deliveryMode,//1:nonpersistent 2:persistent
+                    Integer priority,//优先级
+                    String correlationId,
+                    String replyTo,//反馈队列
+                    String expiration,//expiration到期时间
+                    String messageId,
+                    Date timestamp,
+                    String type,
+                    String userId,
+                    String appId,
+                    String clusterId)
+        ```
+        这里的deliveryMode=1代表不持久化，deliveryMode=2代表持久化。
+        
+        MessageProperties.PERSISTENT_TEXT_PLAIN 是 deliveryMode设置为2的BasicProperties的对象
+        ```text
+        public static final BasicProperties PERSISTENT_TEXT_PLAIN =
+            new BasicProperties("text/plain",
+                                null,
+                                null,
+                                2, // deliveryMode
+                                0, null, null, null,
+                                null, null, null, null,
+                                null, null);
+        ```
 
+        那么设置消息的持久化：
+        
+        ```text
+        channel.basicPublish("exchange.persistent", "persistent", MessageProperties.PERSISTENT_TEXT_PLAIN, "persistent_test_message".getBytes());
+        ```
+        
+    -   exchange持久化
+    
+        上面阐述了队列和消息的持久化，如果不设置Exchange的持久化对消息的可靠性有什么影响？
+        
+        如果exchange不持久化，那么broker服务重启之后，exchange将不复存在，那么进而发送方rabbitmq producer就无法正常发送消息
+        
+        同样要设置exchange的持久化。
+        
+        exchange声明的方法（**将方法中 durable 设为 true 即可**）：
+        ```text
+        // 将方法中 durable 设为 true 即可
+        Exchange.DeclareOk exchangeDeclare(String exchange, String type, boolean durable) throws IOException;
+        Exchange.DeclareOk exchangeDeclare(String exchange, String type, boolean durable, boolean autoDelete,
+                                           Map<String, Object> arguments) throws IOException;
+        Exchange.DeclareOk exchangeDeclare(String exchange, String type) throws IOException;
+        Exchange.DeclareOk exchangeDeclare(String exchange,
+                                                  String type,
+                                                  boolean durable,
+                                                  boolean autoDelete,
+                                                  boolean internal,
+                                                  Map<String, Object> arguments) throws IOException;
+        void exchangeDeclareNoWait(String exchange,
+                                   String type,
+                                   boolean durable,
+                                   boolean autoDelete,
+                                   boolean internal,
+                                   Map<String, Object> arguments) throws IOException;
+        Exchange.DeclareOk exchangeDeclarePassive(String name) throws IOException;
+        ```
+    -   进一步讨论
 
+        将queue、exchange、message等都设置了持久化就能100%保证数据不丢失吗？
+
+        答案是否定的;
+        
+        首先，从consumer端来说，如果这时autoAck=true，那么当consumer收到消息后，还没来得及处理就crash掉了，那么这样数据也丢失。
+        
+        这种情况下的处理，只需将autoAck=false，在正确处理完消息之后进行手动地ack(channel.basicAck(...))            
+        ```text
+        void basicAck(long deliveryTag, boolean multiple) throws IOException;
+        ```
+        
+        其次，关键的问题是消息在正确存入RabbitMQ之后，还需一段时间才能存入磁盘中，RabbitMQ并不是为每条消息都做fsync处理(**fsync函数同步内存中所有已修改的文件数据到储存设备.**)，可能仅仅保存到cache中而不是物理磁盘上，在这段时间内RabbitMQ broker发生crash, 消息保存到cache但是还没来得及落盘，那么这些消息将会丢失。
+        
+        那么这个怎么解决呢？
+        
+        首先可以引入RabbitMQ的mirrored-queue即镜像队列，这个相当于配置了副本，当master在此特殊时间内crash掉，可以自动切换到slave，这样有效的保障了HA, 除非整个集群都挂掉，这样也不能完全的100%保障RabbitMQ不丢消息，但比没有mirrored-queue的要好很多，很多现实生产环境下都是配置了mirrored-queue的。
+        还有要在producer引入事务机制或者Confirm机制来确保消息已经正确的发送至broker端，有关RabbitMQ的事务机制或者Confirm机制可以参考：[RabbitMQ之消息确认机制（事务+Confirm）](https://blog.csdn.net/u013256816/article/details/55515234).
+        
+        **RabbitMQ的可靠性**涉及producer端的确认机制、broker端的镜像队列的配置以及consumer端的确认机制，要想确保消息的可靠性越高，那么性能也会随之而降，鱼和熊掌不可兼得，关键在于选择和取舍。
+       
+## qos 机制
+   解决消息队列中堆积大量数据，当启动消费者消费时，容易被消息冲跨，引入qos机制，让消费者一条一条地消费.
+   ```text
+        /**
+         * 服务质量设置
+         * @param prefetchSize 发送消息的数量限制
+         * @param prefetchCount maximum number of messages that the server
+         * @param true 应用于 Channel，false 应用于 Consumer
+         */
+        void basicQos(int prefetchSize, int prefetchCount, boolean global) throws IOException;
+        void basicQos(int prefetchCount, boolean global) throws IOException;
+        void basicQos(int prefetchCount) throws IOException;
+   ```        
+        
 ## Exchange(交换机、转发器)
 -   Exchange 分类
     -   ""：匿名交换机
@@ -201,6 +346,8 @@ RabbitMQ为我们提供了两种方式：
         
         
 ## 参考文章
+-   [朱小厮博客](https://me.csdn.net/u013256816)
 -   [RabbitMQ三种Exchange模式(fanout,direct,topic)简介](https://blog.csdn.net/qq_26597927/article/details/95353748)       
 -   [RabbitMQ的六种工作模式](https://www.cnblogs.com/Jeely/p/10784013.html)
 -   [RabbitMQ之消息确认机制（事务+Confirm）](https://blog.csdn.net/u013256816/article/details/55515234)
+-   [RabbitMQ之消息持久化](https://blog.csdn.net/u013256816/article/details/60875666/)

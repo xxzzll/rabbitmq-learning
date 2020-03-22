@@ -3,6 +3,7 @@ package com.huawei.rabbitmq.ps;
 import com.huawei.rabbitmq.utils.RabbitmqConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.MessageProperties;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -21,10 +22,12 @@ public class Sender {
         Channel channel = connection.createChannel();
 
         // 声明交换机： exchange
-        channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
+        // durable = true 交换机的持久化
+        channel.exchangeDeclare(EXCHANGE_NAME, "fanout", true);
 
         String msg = "hello publish/subcribe pattern";
-        channel.basicPublish(EXCHANGE_NAME, "", null, msg.getBytes());
+        // 消息的持久化设置：MessageProperties.PERSISTENT_TEXT_PLAIN
+        channel.basicPublish(EXCHANGE_NAME, "", MessageProperties.PERSISTENT_TEXT_PLAIN, msg.getBytes());
 
         System.out.println("[producer] send:" + msg);
         channel.close();
